@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#238E57"
+    tools:context=".MainActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#238E57"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.tomlonghurst.expandablehinttexttest.MainActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="സത്യവാങ്മൂലം" />
+
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/name"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="താങ്കളുടെ പേര്"
+                android:layout_marginTop="32sp"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_name"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/place"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="നിങ്ങളുടെ സ്ഥലം"
+                android:layout_marginTop="32sp"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_name"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/vname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="വാഹനത്തിന്റെ പേര് (eg:-car)"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_car"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/vnumber"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="വാഹനത്തിന്റെ നമ്പർ"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_baseline_24mp_24"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/address"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="വിലാസം"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_baseline_home_24"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/purpos"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="ആവശ്യം"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_baseline_card_travel_24"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/withme"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="എന്നോടൊപ്പമുളളത് (optional)"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_name"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+            <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="ഫോൺ"
+                android:textColor="@color/black"
+                app:floatingLabelColor="@android:color/white"
+                app:image="@drawable/ic_baseline_phone_android_24"
+                app:imageColor="@color/black"
+                app:textBoxColor="@android:color/white" />
+
+
+            <LinearLayout
+                android:id="@+id/button"
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/box"
+                android:textColor="@color/purple_700"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/thistime"
+                    android:padding="10sp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/purple_700"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="ഇത് എഴുതിയ സമയം" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/button1"
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/box"
+                android:textColor="@color/purple_700"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/rtime"
+                    android:padding="10sp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/purple_700"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="മടക്ക സമയം" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/signature"
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/box"
+                android:textColor="@color/purple_700"
+                android:orientation="vertical">
+
+                <TextView
+                    android:padding="10sp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/purple_700"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="കയ്യൊപ്പ്" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_gravity="center"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_marginTop="20sp"
+                android:src="@drawable/ic_baseline_edit_24"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/print"
+                android:layout_marginTop="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/box1"
+                android:clickable="true"
+                android:layout_marginBottom="30sp"
+                android:paddingStart="100sp"
+                android:textColor="@color/purple_700"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:padding="10sp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="Download" />
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_cloud_download_24"
+                    />
+
+            </LinearLayout>
+
+            <WebView
+                android:id="@+id/vb"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="WebViewLayout" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
