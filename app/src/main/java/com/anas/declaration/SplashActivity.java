@@ -11,7 +11,7 @@ import android.os.Handler;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long delayTime = 2000;
+    private static final long delayTime = 3000;
     Handler handler = new Handler();
     private Context context;
 
@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void run() {
 
-            startActivity(new Intent(context, MainActivity.class));
+            startActivity(new Intent(context, MainActivity2.class));
             // overridePendingTransition(0, 0);
             finish();
 

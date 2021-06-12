@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -30,6 +31,7 @@ import android.print.PrintDocumentAdapter;
 import android.print.PrintJob;
 import android.print.PrintManager;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -41,9 +43,22 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.zxing.WriterException;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.tomlonghurst.expandablehinttext.ExpandableHintText;
+import com.webviewtopdf.PdfView;
 
 import java.io.File;
 
@@ -76,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
     ExpandableHintText name,place,vname,vnumber,address,purpos,withme,phone;
     String sname,splace,svname,svnumber,saddress,spurpos,swithme,sphone;
     TextView textView,textView1 ;
+    private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -86,6 +103,74 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout print = findViewById(R.id.print);
         LinearLayout time = findViewById(R.id.button);
         LinearLayout time1 = findViewById(R.id.button1);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = new AdView(this);
+        mAdView.setAdSize(AdSize.BANNER);
+        mAdView.setAdUnitId("ca-app-pub-5296162683363807/7872475100");
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                // Code to be executed when an ad request fails.
+
+
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+
+
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+
+            }
+        });
+
+
+
+        InterstitialAd.load(this,"ca-app-pub-5296162683363807/8790805101", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                Log.i("TAG", "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i("TAG", loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
 
         name=findViewById(R.id.name);
         place  =findViewById(R.id.place);
@@ -193,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please Enter Your Phone", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    Toast.makeText(MainActivity.this, "Generating...", Toast.LENGTH_SHORT).show();
                     webview();
                     GenrateQrcode();
                     final Handler handler = new Handler(Looper.getMainLooper());
@@ -201,7 +287,19 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
                             get_pdf(v1);
                         }
-                    }, 100);
+                    }, 1000);
+
+                    final Handler handler1 = new Handler(Looper.getMainLooper());
+                    handler1.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mInterstitialAd != null) {
+                                mInterstitialAd.show(MainActivity.this);
+                            } else {
+                                Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                            }
+                        }
+                    }, 3000);
 
                 }
 
@@ -214,16 +312,45 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void get_pdf(WebView webView) {
-        PrintManager printManager = (PrintManager) this
-                .getSystemService(Context.PRINT_SERVICE);
 
-        PrintDocumentAdapter printAdapter =
-                webView.createPrintDocumentAdapter("Declaration");
 
-        String jobName = getString(R.string.app_name) + " Print Test";
 
-        printManager.print(jobName, printAdapter,
-                new PrintAttributes.Builder().build());
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            try {
+                String savePath = "sathyavangmoolam";
+                File directory = Environment.getExternalStoragePublicDirectory(savePath);
+
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                final String fileName="Declaration"+timeStamp+".pdf";
+
+                final ProgressDialog progressDialog=new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage("Please wait");
+                progressDialog.show();
+                PdfView.createWebPrintJob(MainActivity.this, webView, directory, fileName, new PdfView.Callback() {
+
+                    @Override
+                    public void success(String path) {
+                        Log.d("1122",path);
+                        progressDialog.dismiss();
+                        PdfView.openPdfFile(MainActivity.this,getString(R.string.app_name),"Do you want to open the pdf file?"+fileName,path);
+                    }
+
+                    @Override
+                    public void failure() {
+                        progressDialog.dismiss();
+
+                    }
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        }
+
+
+
     }
 
 
@@ -315,6 +442,7 @@ public class MainActivity extends AppCompatActivity {
     // permission if not given
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case CAMERA_REQUEST: {
                 if (grantResults.length > 0) {
@@ -498,26 +626,28 @@ public class MainActivity extends AppCompatActivity {
     private void tiemPicker(){
 
 
-        int hour = 0;
-        int minute = 0;
-        TimePickerDialog timePickerDialog=  new TimePickerDialog(MainActivity.this,
-                new TimePickerDialog.OnTimeSetListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(MainActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                        Time time = new Time(hour, minute, 0);
+                Time time = new Time(selectedHour, selectedMinute, 0);
 
-                        //little h uses 12 hour format and big H uses 24 hour format
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a");
 
-                        //format takes in a Date, and Time is a sublcass of Date
-                        s1 = simpleDateFormat.format(time);
-                        ttime=date_time+"  "+s1;
-                        textView.setText(date_time+" "+s1);
-                    }
-                }, hour, minute, false);
-        timePickerDialog.show();
+                s1 = simpleDateFormat.format(time);
+                ttime=date_time+"  "+s1;
+                textView.setText(date_time+" "+s1);
+            }
+        }, hour, minute, false);//Yes 24 hour time
+        mTimePicker.setTitle("Select Time");
+        mTimePicker.show();
+
+
+
 
     }
 
@@ -547,26 +677,26 @@ public class MainActivity extends AppCompatActivity {
     private void rtiemPicker(){
 
 
-        int hour = 0;
-        int minute = 0;
-        TimePickerDialog timePickerDialog=  new TimePickerDialog(MainActivity.this,
-                new TimePickerDialog.OnTimeSetListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(MainActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                        Time time = new Time(hour, minute, 0);
+                Time time = new Time(selectedHour, selectedMinute, 0);
 
-                        //little h uses 12 hour format and big H uses 24 hour format
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a");
 
-                        //format takes in a Date, and Time is a sublcass of Date
-                        s2 = simpleDateFormat.format(time);
-                        rtime=date_time+"  "+s2;
-                        textView1.setText(date_time1+" "+s2);
-                    }
-                }, hour, minute, false);
-        timePickerDialog.show();
+                s2 = simpleDateFormat.format(time);
+                rtime=date_time+"  "+s2;
+                textView1.setText(date_time1+" "+s2);
+            }
+        }, hour, minute, false);//Yes 24 hour time
+        mTimePicker.setTitle("Select Time");
+        mTimePicker.show();
+
 
     }
 
@@ -621,6 +751,8 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }
+
+
 
 
 }
