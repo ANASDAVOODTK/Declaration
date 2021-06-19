@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_500"
+    tools:context=".VaccineActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="100sp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Available Vaccine Slots 💉"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="5sp"
+                android:layout_marginEnd="5sp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/box2">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinner1"
+                        android:layout_width="190sp"
+                        android:layout_height="wrap_content"
+                        app:smsp_isSearchable="true"
+                        android:layout_marginStart="5dp"
+                        app:smsp_underlineColor="@color/smsp_transparent_color"
+                        app:smsp_enableFloatingLabel="false"
+                        app:smsp_hintSize="18sp"
+                        app:smsp_hint="Choose Your District"
+                        app:smsp_hintColor="@color/purple_500"
+                        app:smsp_searchHeaderBackgroundColor="@color/purple_500"
+                        app:smsp_itemColor="@color/teal_200"
+                        app:smsp_itemSize="18sp"
+                        app:smsp_itemListColor="@color/purple_500"
+                        app:smsp_itemListHintBackgroundColor="#808080"
+                        app:smsp_itemListHintColor="#FFFFFF"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderText="Choose District"
+                        app:smsp_selectedItemListColor="#FF5252" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/calender"
+                    android:layout_width="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15sp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/ic_baseline_calendar_today_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <Button
+                    android:id="@+id/searche"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ACDCC3"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/purple_500"
+                    android:text="Search" />
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/llsearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box2"
+            android:layout_marginStart="10sp"
+            android:visibility="gone"
+            android:layout_marginEnd="20sp"
+            android:layout_marginTop="8sp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/seachhtpt"
+                android:layout_width="match_parent"
+                android:padding="10sp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textColor="@color/purple_500"
+                android:background="@null"
+                android:hint="🔍 Search Center Name, id, Address...."
+                android:inputType="textPersonName"
+                />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:id="@+id/lldd"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/districtma"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                     />
+
+                <TextView
+                    android:id="@+id/datem"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:padding="10sp"
+            android:layout_marginTop="-5sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="10dp"
+        app:fabAlignmentMode="center"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="10dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:labelVisibilityMode="labeled"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10sp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_transparent"
+            app:menu="@menu/bottom_nav_menu" />
+
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:fabCustomSize="70dp"
+        app:maxImageSize="46dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_anchor="@id/bottomAppBar" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/load"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recycler_view"
+        app:lottie_rawRes="@raw/loader"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/load1"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recycler_view"
+        app:lottie_rawRes="@raw/vacc"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

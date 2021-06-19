@@ -17,8 +17,10 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -35,6 +37,8 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -43,21 +47,17 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.zxing.WriterException;
 import com.theartofdev.edmodo.cropper.CropImage;
-import com.tomlonghurst.expandablehinttext.ExpandableHintText;
 import com.webviewtopdf.PdfView;
 
 import java.io.File;
@@ -68,7 +68,6 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -88,11 +87,11 @@ public class MainActivity extends AppCompatActivity {
     String storagePermission[];
     String date_time,date_time1,s1,s2,ttime,rtime;
 
-    ExpandableHintText name,place,vname,vnumber,address,purpos,withme,phone;
     String sname,splace,svname,svnumber,saddress,spurpos,swithme,sphone;
     TextView textView,textView1 ;
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
+    AutoCompleteTextView name,place,vname,vnumber,address,purpos,withme,phone;
 
 
     @Override
@@ -103,6 +102,77 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout print = findViewById(R.id.print);
         LinearLayout time = findViewById(R.id.button);
         LinearLayout time1 = findViewById(R.id.button1);
+
+        SharedPreferences sharedPref = getSharedPreferences("DCL", 0);
+
+        String[] namearr = {sharedPref.getString("name", "")};
+        name = (AutoCompleteTextView) findViewById(R.id.ed2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, namearr);
+        name.setThreshold(2);
+        name.setAdapter(adapter);
+
+        String[] placearr = {sharedPref.getString("place", "")};
+        place = (AutoCompleteTextView) findViewById(R.id.place);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, placearr);
+        place.setThreshold(2);
+        place.setAdapter(adapter1);
+
+        withme = (AutoCompleteTextView) findViewById(R.id.withme);
+
+
+        String[] vnamearr = {"Car","bike","Scooter","Jeep"};
+        vname = (AutoCompleteTextView) findViewById(R.id.vname);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, vnamearr);
+        vname.setThreshold(2);
+        vname.setAdapter(adapter2);
+
+
+        String[] vnumberarr = {sharedPref.getString("vnumber", "")};
+        vnumber = (AutoCompleteTextView) findViewById(R.id.vnumber);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, vnumberarr);
+        vnumber.setThreshold(2);
+        vnumber.setAdapter(adapter3);
+
+        String[] addressarr = {sharedPref.getString("address", "")};
+        address = (AutoCompleteTextView) findViewById(R.id.address);
+        ArrayAdapter<String> adapter4 = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, addressarr);
+        address.setThreshold(2);
+        address.setAdapter(adapter4);
+
+        String[] purposarr = {"For Buying Fertilizer","For Buying Groceries","For Buying Vegetables","Going to Hospital","Going To Death Ceremony","Going to Wedding",
+                "വളം വാങ്ങുന്നതിന്", "പലചരക്ക് സാധനങ്ങൾ വാങ്ങുന്നതിന്", "പച്ചക്കറികൾ വാങ്ങുന്നതിന്", "ആശുപത്രിയിൽ പോകുക", "മരണ ചടങ്ങിന് പോകുക", "വിവാഹത്തിന് പോകുക"};
+        purpos = (AutoCompleteTextView) findViewById(R.id.purpos);
+        ArrayAdapter<String> adapter5 = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, purposarr);
+        purpos.setThreshold(2);
+        purpos.setAdapter(adapter5);
+
+        String[] phonearr = {sharedPref.getString("phone", "")};
+        phone = (AutoCompleteTextView) findViewById(R.id.phone);
+        ArrayAdapter<String> adapter6 = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, phonearr);
+        phone.setThreshold(2);
+        phone.setAdapter(adapter6);
+
+
+        imageView =findViewById(R.id.img);
+
+
+        File imgFile = new  File("/storage/emulated/0/sathyavangmoolam/s.jpg");
+        if(imgFile.exists()){
+
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+            imageView.setImageBitmap(myBitmap);
+
+        };
+
+
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -172,14 +242,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        name=findViewById(R.id.name);
-        place  =findViewById(R.id.place);
-        vname  =findViewById(R.id.vname);
-        vnumber=findViewById(R.id.vnumber);
-        address=findViewById(R.id.address);
-        purpos =findViewById(R.id.purpos);
-        withme =findViewById(R.id.withme);
-        phone  =findViewById(R.id.phone);
+
         textView = findViewById(R.id.thistime);
         textView1 = findViewById(R.id.rtime);
 
@@ -235,6 +298,7 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
+
                 sname=name.getText().toString().trim();
                 splace=place.getText().toString().trim();
                 svname=vname.getText().toString().trim();
@@ -251,33 +315,49 @@ public class MainActivity extends AppCompatActivity {
 
                 if(sname.isEmpty())
                 {
-                    Toast.makeText(MainActivity.this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
+                    name.setError("Please Enter Your Name");
                 }
                 else if(splace.isEmpty())
                 {
+                    place.setError("Please Enter Your Place");
                     Toast.makeText(MainActivity.this, "Please Enter Your Place", Toast.LENGTH_SHORT).show();
                 }
                 else if(svname.isEmpty())
                 {
+                    vname.setError("Please Enter Your Vehicle Name");
                     Toast.makeText(MainActivity.this, "Please Enter Your Vehicle Name", Toast.LENGTH_SHORT).show();
                 }
                 else if(svnumber.isEmpty())
                 {
+                    vnumber.setError("Please Enter Your Vehicle Number");
                     Toast.makeText(MainActivity.this, "Please Enter Your Vehicle Number", Toast.LENGTH_SHORT).show();
                 }
                 else if(saddress.isEmpty())
                 {
+                    address.setError("Please Enter Your Address");
                     Toast.makeText(MainActivity.this, "Please Enter Your Address", Toast.LENGTH_SHORT).show();
                 }
                 else if(spurpos.isEmpty())
                 {
+                    purpos.setError("Please Enter Your Purpose");
                     Toast.makeText(MainActivity.this, "Please Enter Your Purpose", Toast.LENGTH_SHORT).show();
                 }
                 else if(sphone.isEmpty())
                 {
+                    phone.setError("Please Enter Your Phone");
                     Toast.makeText(MainActivity.this, "Please Enter Your Phone", Toast.LENGTH_SHORT).show();
                 }
                 else {
+
+                    SharedPreferences sharedPref = getSharedPreferences("DCL", 0);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("name", sname);
+                    editor.putString("place", splace);
+                    editor.putString("vnumber", svnumber);
+                    editor.putString("address", saddress);
+                    editor.putString("phone", sphone);
+                    editor.commit();
+
                     Toast.makeText(MainActivity.this, "Generating...", Toast.LENGTH_SHORT).show();
                     webview();
                     GenrateQrcode();
@@ -559,7 +639,7 @@ public class MainActivity extends AppCompatActivity {
                 "       <b>"+swithme+"</b>  ആണ്. \n" +
                 "       <br>\n" +
                 "       <br>\n" +
-                "       ഞാൻ <b>"+date_time1+" (DATE) "+s2+" (TIME )</b>(തീയതി/സമയം) തിരിച്ച് പോകും.\n" +
+                "       ഞാൻ <b>"+date_time1+" : "+s2+" </b>(തീയതി/സമയം) തിരിച്ച് പോകും.\n" +
                 "\n" +
                 "        <br>\n" +
                 "        <br>\n" +
@@ -594,6 +674,7 @@ public class MainActivity extends AppCompatActivity {
                 "  </body>\n" +
                 "\n" +
                 "</html>";
+
 
         v1 = findViewById(R.id.vb);
         v1.getSettings().setAllowFileAccess(true);

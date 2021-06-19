@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
 
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -20,10 +21,12 @@
         tools:context="com.tomlonghurst.expandablehinttexttest.MainActivity">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
+            android:layout_marginEnd="10sp"
+            android:layout_marginStart="10sp"
             android:padding="14dp">
 
             <TextView
@@ -39,103 +42,171 @@
                 android:textStyle="bold" />
 
 
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/name"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32sp"
-                android:hint="താങ്കളുടെ പേര്"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_name"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/place"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32sp"
-                android:hint="നിങ്ങളുടെ സ്ഥലം"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_baseline_place_24"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/vname"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:hint="വാഹനത്തിന്റെ പേര് (eg:-car)"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_car"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/vnumber"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:hint="വാഹനത്തിന്റെ നമ്പർ"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_baseline_24mp_24"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/address"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:hint="വിലാസം"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_baseline_home_24"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/purpos"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:hint="ആവശ്യം"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_baseline_card_travel_24"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/withme"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:hint="എന്നോടൊപ്പമുളളത് (optional)"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_name"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
-
-            <com.tomlonghurst.expandablehinttext.ExpandableHintText
-                android:id="@+id/phone"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:inputType="phone"
-                android:hint="ഫോൺ"
-                android:textColor="@color/black"
-                app:floatingLabelColor="@android:color/white"
-                app:image="@drawable/ic_baseline_phone_android_24"
-                app:imageColor="@color/black"
-                app:textBoxColor="@android:color/white" />
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ed2"
+                    android:drawableLeft="@drawable/ic_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" താങ്കളുടെ പേര്"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/place"
+                    android:drawableLeft="@drawable/ic_baseline_place_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" നിങ്ങളുടെ സ്ഥലം"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/vname"
+                    android:drawableLeft="@drawable/ic_car"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" വാഹനത്തിന്റെ പേര്"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/vnumber"
+                    android:drawableLeft="@drawable/ic_baseline_24mp_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" വാഹനത്തിന്റെ നമ്പർ"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/address"
+                    android:drawableLeft="@drawable/ic_baseline_home_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" വിലാസം"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/purpos"
+                    android:drawableLeft="@drawable/ic_baseline_card_travel_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" ആവശ്യം"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/withme"
+                    android:drawableLeft="@drawable/ic_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" എന്നോടൊപ്പമുളളത് (optional)"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6sp"
+                android:layout_marginTop="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/phone"
+                    android:drawableLeft="@drawable/ic_baseline_phone_android_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:hint=" ഫോൺ"
+                    android:textSize="17sp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
 
 
             <LinearLayout
@@ -221,7 +292,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:layout_marginBottom="50sp"
+                android:layout_marginBottom="120sp"
                 android:background="@drawable/box1"
                 android:clickable="true"
                 android:orientation="horizontal"
@@ -265,7 +336,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="682dp"
+        android:layout_marginTop="670dp"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-5296162683363807/7872475100"
         app:layout_constraintBottom_toBottomOf="parent"

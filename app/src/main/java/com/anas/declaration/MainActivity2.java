@@ -1,5 +1,6 @@
 package com.anas.declaration;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -22,28 +25,32 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity2 extends AppCompatActivity{
 
 
     private List<FeedItem> feedsList;
     private RecyclerView mRecyclerView;
     private MyRecyclerViewAdapter adapter;
-    SwipeRefreshLayout mSwipeRefreshLayout;
     private AdView mAdView;
+
+    BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        mSwipeRefreshLayout = findViewById(R.id.swipe_container);
-        mSwipeRefreshLayout.setOnRefreshListener(this);
-
+        bottomNavigation = findViewById(R.id.bottomNavigationView);
+        bottomNavigation.getMenu().getItem(0).setChecked(true);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.mylist);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -112,7 +119,7 @@ public class MainActivity2 extends AppCompatActivity implements SwipeRefreshLayo
             }
         });
 
-        ImageView add = findViewById(R.id.add);
+        FloatingActionButton add = findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,28 +133,42 @@ public class MainActivity2 extends AppCompatActivity implements SwipeRefreshLayo
 
         Search_Dir(Environment.getExternalStoragePublicDirectory(savePath));
         listdata();
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.more:
+                        Intent intent1 = new Intent(MainActivity2.this,MoreActivity.class);
+                        overridePendingTransition(0, 0);
+                        startActivity(intent1);
+                        finish();
+                        overridePendingTransition(0, 0);
+                         break;
+                    case R.id.hotspot:
+                        Intent intent = new Intent(MainActivity2.this,HotspotActivity.class);
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        break;
+                    case R.id.vaccine:
+
+                        Intent intent2 = new Intent(MainActivity2.this,VaccineActivity.class);
+                        overridePendingTransition(0, 0);
+                        startActivity(intent2);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
-    @Override
-    public void onRefresh() {
-
-        String savePath = "sathyavangmoolam";
-        Search_Dir(Environment.getExternalStoragePublicDirectory(savePath));
-        listdata();
-    }
-
-
-    public void refresh() {
-
-        String savePath = "sathyavangmoolam";
-        Search_Dir(Environment.getExternalStoragePublicDirectory(savePath));
-        listdata1();
-    }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        mSwipeRefreshLayout.setRefreshing(true);
         String savePath = "sathyavangmoolam";
         Search_Dir(Environment.getExternalStoragePublicDirectory(savePath));
         listdata();
@@ -182,15 +203,8 @@ public class MainActivity2 extends AppCompatActivity implements SwipeRefreshLayo
     }
 
     public void listdata(){
-        mSwipeRefreshLayout.setRefreshing(false);
         adapter = new MyRecyclerViewAdapter(MainActivity2.this, feedsList);
         Log.d("aasas",String.valueOf(adapter));
-        mRecyclerView.setAdapter(adapter);
-
-    }
-
-    public void listdata1(){
-        adapter = new MyRecyclerViewAdapter(this, feedsList);
         mRecyclerView.setAdapter(adapter);
 
     }
