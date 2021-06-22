@@ -130,7 +130,7 @@ public class HotspotActivity extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showdialog("B-Partial lockdown","Average TPR between 8 and 20 percent (Areas with Moderate spread)");
+                showdialog1("B-Partial lockdown","Average TPR between 8 and 20 percent (Areas with Moderate spread)");
             }
         });
 
@@ -139,7 +139,7 @@ public class HotspotActivity extends AppCompatActivity {
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showdialog("C-Full lockdown","Average TPR between 20 and 30 percent (Areas with high spread)");
+                showdialog2("C-Full lockdown","Average TPR between 20 and 30 percent (Areas with high spread)");
             }
         });
 
@@ -147,7 +147,7 @@ public class HotspotActivity extends AppCompatActivity {
         D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showdialog("D-Triple lockdown","Average TPR above 30 percent (Areas with critical spread)");
+                showdialog3("D-Triple lockdown","Average TPR above 30 percent (Areas with critical spread)");
             }
         });
     }
@@ -203,6 +203,7 @@ public class HotspotActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(a)
                 .setMessage(b)
+                .setIcon(R.drawable.circle)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -211,4 +212,47 @@ public class HotspotActivity extends AppCompatActivity {
                 }).show();
     }
 
+    public void showdialog1(String a,String b)
+    {
+        new AlertDialog.Builder(this)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle1)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+
+
+    public void showdialog2(String a,String b)
+    {
+        new AlertDialog.Builder(this)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle2)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+
+
+    public void showdialog3(String a,String b)
+    {
+        new AlertDialog.Builder(this)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle3)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
 }

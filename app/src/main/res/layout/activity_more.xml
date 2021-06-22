@@ -68,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="15sp"
+                android:layout_marginBottom="20sp"
                 android:paddingEnd="15sp"
                 android:orientation="vertical">
 
@@ -77,7 +78,6 @@
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="10sp"
                     android:clickable="true"
-                    android:visibility="gone"
                     android:layout_marginTop="24dp"
                     android:focusable="true">
 
@@ -118,6 +118,52 @@
                 </androidx.cardview.widget.CardView>
 
 
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10sp"
+                    android:clickable="true"
+                    android:layout_marginTop="24dp"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/kvs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/purple_500"
+                        android:background="@color/white"
+                        android:text="Kerala Total Vaccine Stats➜"
+                        android:textSize="18sp"
+                        android:padding="20dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10sp"
+                    android:clickable="true"
+                    android:layout_marginTop="24dp"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/kdvs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/purple_500"
+                        android:background="@color/white"
+                        android:text="Kerala District Vaccine Stats➜"
+                        android:textSize="18sp"
+                        android:padding="20dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -137,6 +183,52 @@
                         android:text="കൊറോണ വൈറസ് രോഗം പടരുന്നതിനാൽ സുരക്ഷിതമായി തുടരാനുള്ള വഴികാട്ടി ➜"
                         android:textSize="17sp"
                         android:padding="8dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10sp"
+                    android:clickable="true"
+                    android:layout_marginTop="24dp"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/chs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/purple_500"
+                        android:background="@color/white"
+                        android:text="Current Hospital Stats (covid19jagratha portal) ➜"
+                        android:textSize="18sp"
+                        android:padding="20dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10sp"
+                    android:clickable="true"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="20sp"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/cpp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/purple_500"
+                        android:background="@color/white"
+                        android:text="Permit and Passes (covid19jagratha portal) ➜"
+                        android:textSize="18sp"
+                        android:padding="20dp" />
 
                 </androidx.cardview.widget.CardView>
 

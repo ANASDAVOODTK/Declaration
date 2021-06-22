@@ -30,7 +30,7 @@
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Kerala District wise Status"
+            android:text="Kerala District wise Stats"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -97,6 +97,11 @@
             android:layout_marginBottom="25sp"
             android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="match_parent"
@@ -114,101 +119,322 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20sp"
+                    android:background="@drawable/box"
                     android:orientation="vertical">
 
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/distrct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="@string/kerala1"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
                     <TextView
-                        android:id="@+id/distrct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
                         android:textColor="@color/purple_500"
-                        android:gravity="center"
                         android:background="@color/white"
+                        android:layout_marginTop="5sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="🤕 ആകെ സ്ഥിരീകരിച്ചത്"
                         android:textSize="18sp"
-                        android:padding="10dp" />
+                        />
 
                     <TextView
+                        android:gravity="center"
                         android:id="@+id/confirmed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
+                        android:textColor="#0B4225"
                         android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:textStyle="bold"
+                        android:text="29298342"
+                        android:textSize="22sp"
+                        />
 
-                    <TextView
-                        android:id="@+id/recoverd"
+                </LinearLayout>
+
+
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/active"
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="🙂 രോഗവിമുക്തി നേടിയവർ"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/recoverd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/dead"
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="🤒 ഇപ്പോൾ രോഗമുള്ളവർ"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/active"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/totalobservation"
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="😑 ആകെ മരണപ്പെട്ടവർ"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/dead"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/hospitalobs"
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="😷 ആകെ നിരീക്ഷണത്തിൽ ഉള്ളവർ"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/totalobservation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/homeobs"
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="🏥 ആശുപത്രിയിൽ നിരീക്ഷണത്തിൽ"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/hospitalobs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/todayregister"
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="🏠 വീട്ടിൽ നിരീക്ഷണത്തിൽ:"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/homeobs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/purple_500"
-                        android:background="@color/white"
-                        android:textSize="18sp"
-                        android:padding="10dp" />
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="@color/purple_500"
+                            android:background="@color/white"
+                            android:layout_marginTop="5sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="🧍 ഇന്ന് ഹോസ്പിറ്റലിൽ രജിസ്റ്റർ ചെയ്തവർ"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/todayregister"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textColor="#0B4225"
+                            android:background="@color/white"
+                            android:textStyle="bold"
+                            android:text="29298342"
+                            android:textSize="22sp"
+                            />
+
+                    </LinearLayout>
+
+
+
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
 
         </ScrollView>
 

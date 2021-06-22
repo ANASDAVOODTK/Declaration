@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -91,6 +92,49 @@ public class MoreActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView textView3 = findViewById(R.id.kvs);
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MoreActivity.this, VaccinatedActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView textView4= findViewById(R.id.kdvs);
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MoreActivity.this, Kerala_district_vaccine_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView textView5= findViewById(R.id.chs);
+        textView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://covid19jagratha.kerala.nic.in/home/addHospitalDashBoard");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+
+        TextView textView6= findViewById(R.id.cpp);
+        textView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://covid19jagratha.kerala.nic.in/home/addEssentialservices");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+
+
+
 
     }
 }

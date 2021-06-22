@@ -27,7 +27,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Declaration">
-        <activity android:name=".Kerala_Total_Activity"></activity>
+        <activity android:name=".Kerala_district_vaccine_Activity"></activity>
+        <activity android:name=".VaccinatedActivity" />
+        <activity android:name=".Kerala_Total_Activity" />
         <activity android:name=".KeraldataActivity" />
         <activity
             android:name=".CovidetailsActivity"

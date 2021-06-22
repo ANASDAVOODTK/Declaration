@@ -3,6 +3,7 @@ package com.anas.declaration;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
         import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
         import android.os.Bundle;
@@ -11,7 +12,11 @@ import android.os.Build;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.TextView;
-        import androidx.recyclerview.widget.RecyclerView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,6 +72,37 @@ public class HotspotaAapter extends RecyclerView.Adapter<HotspotaAapter.ViewHold
                holder.wards.setText("Category : "+listData.getWards());
        }
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(listData.getWards().equals("Cat.A"))
+                {
+                    showdialog("A-Limited restrictions",listData.getLsgd()+" Panchayat's Average TPR below 8 percent (Areas with low spread)");
+
+                }
+                else if (listData.getWards().equals("Cat.B"))
+                {
+                    showdialog1("B-Partial lockdown",listData.getLsgd()+" Panchayat's Average TPR between 8 and 20 percent (Areas with Moderate spread)");
+                }
+                else if (listData.getWards().equals("Cat.C"))
+                {
+                    showdialog2("C-Full lockdown",listData.getLsgd()+" Panchayat's Average TPR between 20 and 30 percent (Areas with high spread)");
+                }
+                else if (listData.getWards().equals("Cat.D"))
+                {
+                    showdialog3("D-Triple lockdown",listData.getLsgd()+" Panchayat's Average TPR above 30 percent (Areas with critical spread)");
+                }
+                else
+                {
+                    showdialog3("New Update","Coming...");
+                    Toast.makeText(context, "New Update Coming...", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
     }
 
@@ -78,12 +114,14 @@ public class HotspotaAapter extends RecyclerView.Adapter<HotspotaAapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView district,lsgd,wards;
+        CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
 
             district= (TextView)itemView.findViewById(R.id.district);
             lsgd=(TextView)itemView.findViewById(R.id.lsgd);
             wards=(TextView)itemView.findViewById(R.id.wards);
+            cardView=(CardView) itemView.findViewById(R.id.cardht);
 
         }
     }
@@ -91,6 +129,65 @@ public class HotspotaAapter extends RecyclerView.Adapter<HotspotaAapter.ViewHold
     public void filterList(ArrayList<HotspotModelList> filteredList) {
         list_data = filteredList;
         notifyDataSetChanged();
+    }
+
+
+    public void showdialog3(String a,String b)
+    {
+        new AlertDialog.Builder(context)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle3)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+
+
+    public void showdialog(String a,String b)
+    {
+        new AlertDialog.Builder(context)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+
+    public void showdialog1(String a,String b)
+    {
+        new AlertDialog.Builder(context)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle1)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+
+
+    public void showdialog2(String a,String b)
+    {
+        new AlertDialog.Builder(context)
+                .setTitle(a)
+                .setMessage(b)
+                .setIcon(R.drawable.circle2)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
     }
 
 }

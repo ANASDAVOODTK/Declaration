@@ -116,42 +116,12 @@ public class VaccineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(VaccineActivity.this,MainActivity.class);
-                startActivity(intent);
+                Toast.makeText(VaccineActivity.this, "This feature will get next Update", Toast.LENGTH_SHORT).show();
 
             }
         });
 
         initSpinner();
-
-
-
-        Button search = findViewById(R.id.searche);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                if(districtId.equals("1") | districtId.equals(""))
-                {
-                    Toast.makeText(VaccineActivity.this, "Please Choose District", Toast.LENGTH_SHORT).show();
-                }
-                else if(date.equals("1")| date.equals(""))
-                {
-                    Toast.makeText(VaccineActivity.this, "Please Choose date", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-
-                    getData();
-                    load.setVisibility(View.VISIBLE);
-                    vac.setVisibility(View.GONE);
-                }
-
-            }
-        });
-
-
 
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -169,7 +139,7 @@ public class VaccineActivity extends AppCompatActivity {
 
         };
 
-        ImageView calender = findViewById(R.id.calender);
+        LinearLayout calender = findViewById(R.id.llcdate);
         calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -225,6 +195,10 @@ public class VaccineActivity extends AppCompatActivity {
                     editor.putString("date", "1");
                     editor.putString("did", "301");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
 
                 }
                 else if(provinceList.get(position).equals("Ernakulam"))
@@ -232,78 +206,130 @@ public class VaccineActivity extends AppCompatActivity {
                     editor.putString("date", "1");
                     editor.putString("did", "307");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Idukki"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "306");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Kannur"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "297");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Kasaragod"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "295");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Kollam"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "298");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Kottayam"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "304");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Kozhikode"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "305");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Malappuram"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "302");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Palakkad"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "308");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Pathanamthitta"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "300");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Thiruvananthapuram"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "296");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Thrissur"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "303");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
                 else if(provinceList.get(position).equals("Wayanad"))
                 {
                     editor.putString("date", "1");
                     editor.putString("did", "299");
                     editor.commit();
+                    finish();
+                    overridePendingTransition( 0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition( 0, 0);
                 }
 
             }
@@ -341,14 +367,23 @@ public class VaccineActivity extends AppCompatActivity {
         String myFormat = "dd-MM-yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         Toast.makeText(this, "Date :"+sdf.format(myCalendar.getTime()), Toast.LENGTH_SHORT).show();
-        SharedPreferences sharedPref = getSharedPreferences("mypref", 0);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("date", sdf.format(myCalendar.getTime()));
-        editor.commit();
-        finish();
-        overridePendingTransition( 0, 0);
-        startActivity(getIntent());
-        overridePendingTransition( 0, 0);
+        date = sdf.format(myCalendar.getTime());
+
+        if(districtId.equals("1") | districtId.equals(""))
+        {
+            Toast.makeText(VaccineActivity.this, "Please Choose District", Toast.LENGTH_SHORT).show();
+        }
+        else if(date.equals("1")| date.equals(""))
+        {
+            Toast.makeText(VaccineActivity.this, "Please Choose date", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+
+            getData();
+            load.setVisibility(View.VISIBLE);
+            vac.setVisibility(View.GONE);
+        }
 
     }
 
